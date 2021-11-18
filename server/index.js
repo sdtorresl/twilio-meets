@@ -1,11 +1,33 @@
 const express = require('express');
+
 require('dotenv').config()
 
 const PORT = process.env.PORT || 3001;
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = require('twilio')(accountSid, authToken);
 
 const app = express();
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
+    res.json({ message: "Hello from server!" });
+});
+
+app.post("/api/rooms", (req, res) => {
+    client.video.rooms.create('DailyStandup')
+        .then(room => res.json(room))
+        .catch(error => res.json({ message: error }));
+})
+
+app.get("/api/rooms/:id", (req, res) => {
+    const roomId = req.params.id;
+    client.video.rooms(roomId)
+        .fetch()
+        .then(room => res.json(room))
+        .catch(error => res.json({ message: error }));;
+})
+
+/* app.get("/", (req, res) => {
     res.redirect("index.html");
 });
 
@@ -43,6 +65,7 @@ app.get("/api/token", (req, res) => {
     res.json({ token });
 });
 
+ */
 app.use(express.static('client'));
 
 app.listen(PORT, () => {
