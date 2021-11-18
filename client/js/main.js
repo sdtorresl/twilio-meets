@@ -1,15 +1,26 @@
-window.onload = function () {
+window.onload = function() {
     console.log("Window loaded");
 
     document.getElementById("join-meeting").onclick = joinMeeting;
 
     var createMeetingModal = document.getElementById('createMeetingModal')
-    createMeetingModal.addEventListener('show.bs.modal', function (event) {
+    createMeetingModal.addEventListener('show.bs.modal', function(event) {
         var modalTitle = createMeetingModal.querySelector('.modal-title')
-        var modalBodyInput = createMeetingModal.querySelector('.modal-body input')
+        var modalBody = createMeetingModal.querySelector('.modal-body')
 
-        modalTitle.textContent = 'New message to ' + "Test"
-        modalBodyInput.value = recipient
+        const Http = new XMLHttpRequest();
+        const url = '/api/rooms';
+        Http.open("POST", url);
+        Http.send();
+
+        Http.onreadystatechange = (e) => {
+            const response = JSON.parse(Http.responseText)
+            console.log(response)
+            modalTitle.textContent = `Tu reunión se ha generado`
+            modalBody.textContent = `http://localhost:3001/${response.sid}`
+        }
+
+
     })
 
 };
@@ -21,4 +32,3 @@ function createMeeting(event) {
 function joinMeeting(event) {
     console.log("Join meeting");
 }
-
