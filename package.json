@@ -1,0 +1,33 @@
+{
+  "name": "twilio-meets",
+  "version": "1.0.0",
+  "description": "A Google Meets clone using Twilio Video",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "develop": "nodemon server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "proxy": "http://localhost:3001",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdtorresl/twilio-meets.git"
+  },
+  "keywords": [
+    "Twilio",
+    "Video"
+  ],
+  "author": "Sergio Torres",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/sdtorresl/twilio-meets/issues"
+  },
+  "homepage": "https://github.com/sdtorresl/twilio-meets#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15",
+    "twilio": "^3.71.2",
+    "twilio-video": "^2.18.1"
+  }
+}
