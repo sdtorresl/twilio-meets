@@ -38,7 +38,14 @@ function participantConnected(participant) {
 
     const div = document.createElement('div');
     div.id = participant.sid;
+    div.className = 'participant'
     div.innerText = participant.identity;
+
+    const participantName = document.createElement('div')
+    participantName.innerText = participant.identity
+    participantName.className = 'participant-name'
+
+    div.appendChild(participantName)
 
     participant.on('trackSubscribed', track => trackSubscribed(div, track));
     participant.on('trackUnsubscribed', trackUnsubscribed);
@@ -49,7 +56,9 @@ function participantConnected(participant) {
         }
     });
 
-    document.body.appendChild(div);
+    const participantContainer = document.getElementById("participants")
+
+    participantContainer.appendChild(div);
 }
 
 function participantDisconnected(participant) {

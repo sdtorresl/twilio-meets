@@ -1,0 +1,35 @@
+#meet-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: red;
+}
+
+#participants {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 30%;
+    background: white;
+    overflow-y: scroll;
+}
+
+#participants .participant {
+    border-radius: 15px;
+    margin: 10px;
+    position: relative;
+}
+
+#participants .participant video {
+    width: 100%;
+}
+
+#participants .participant-name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
