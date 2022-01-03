@@ -32,4 +32,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+    background: #F22F46;
+    width: fit-content;
+    color: black;
 }
